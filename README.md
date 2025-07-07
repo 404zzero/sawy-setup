@@ -6,3 +6,4 @@ It is not intended for other people, only for my device, because it has nvidia a
 
 ![](https://raw.githubusercontent.com/404zzero/sawy-setup/refs/heads/main/image.png)
 
+![](https://raw.githubusercontent.com/404zzero/sawy-setup/refs/heads/main/wp13059150-yoru-chainsaw-man-wallpapers.jpg)
