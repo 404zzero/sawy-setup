@@ -1,0 +1,89 @@
+[colors.primary]
+background = '#000000' # Gris muy oscuro (from first config)
+foreground = '#CDD6F4' # text (from second config)
+# Bright and dim foreground colors
+dim_foreground = '#CDD6F4' # text (from second config)
+bright_foreground = '#CDD6F4' # text (from second config)
+
+# Cursor colors
+[colors.cursor]
+text = '#1A1A1A' # Gris muy oscuro (from first config)
+cursor = '#F5E0DC' # rosewater (from second config)
+
+[colors.vi_mode_cursor]
+text = '#1A1A1A' # Gris muy oscuro (from first config)
+cursor = '#B4BEFE' # lavender (from second config)
+
+# Search colors
+[colors.search.matches]
+foreground = '#1A1A1A' # Gris muy oscuro (from first config)
+background = '#A6ADC8' # subtext0 (from second config)
+
+[colors.search.focused_match]
+foreground = '#1A1A1A' # Gris muy oscuro (from first config)
+background = '#A6E3A1' # green (from second config)
+
+[colors.footer_bar]
+foreground = '#1A1A1A' # Gris muy oscuro (from first config)
+background = '#A6ADC8' # subtext0 (from second config)
+
+# Keyboard regex hints
+[colors.hints.start]
+foreground = '#1A1A1A' # Gris muy oscuro (from first config)
+background = '#F9E2AF' # yellow (from second config)
+
+[colors.hints.end]
+foreground = '#1A1A1A' # Gris muy oscuro (from first config)
+background = '#A6ADC8' # subtext0 (from second config)
+
+# Selection colors
+[colors.selection]
+text = '#1A1A1A' # Gris muy oscuro (from first config)
+background = '#F5E0DC' # rosewater (from second config)
+
+# Normal colors
+[colors.normal]
+black = '#45475A' # surface1 (from second config)
+red = '#F38BA8' # red (from second config)
+green = '#A6E3A1' # green (from second config)
+yellow = '#F9E2AF' # yellow (from second config)
+blue = '#89B4FA' # blue (from second config)
+magenta = '#F5C2E7' # pink (from second config)
+cyan = '#94E2D5' # teal (from second config)
+white = '#BAC2DE' # subtext1 (from second config)
+
+# Bright colors
+[colors.bright]
+black = '#585B70' # surface2 (from second config)
+red = '#F38BA8' # red (from second config)
+green = '#A6E3A1' # green (from second config)
+yellow = '#F9E2AF' # yellow (from second config)
+blue = '#89B4FA' # blue (from second config)
+magenta = '#F5C2E7' # pink (from second config)
+cyan = '#94E2D5' # teal (from second config)
+white = '#A6ADC8' # subtext0 (from second config)
+
+# Dim colors
+[colors.dim]
+black = '#45475A' # surface1 (from second config)
+red = '#F38BA8' # red (from second config)
+green = '#A6E3A1' # green (from second config)
+yellow = '#F9E2AF' # yellow (from second config)
+blue = '#89B4FA' # blue (from second config)
+magenta = '#F5C2E7' # pink (from second config)
+cyan = '#94E2D5' # teal (from second config)
+white = '#BAC2DE' # subtext1 (from second config)
+
+[font.normal]
+family = "JetBrains Mono Nerd Font"
+style = "Bold"
+
+[window]
+padding = { x = 15, y = 15 }
+decorations = "None"
+opacity = 0.8
+
+[terminal]
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-c", "temp_file=$(mktemp); pokeget random -s --hide-name > $temp_file; fastfetch --file $(shuf -n1 -e /home/fallenangel/wallpaper/ascii_img.txt /home/fallenangel/wallpaper/ascii_img2.txt $temp_file) --load-config /home/fallenangel/wallpaper/fastfetch/examples/22.jsonc; rm $temp_file; exec zsh"]
