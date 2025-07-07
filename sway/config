@@ -1,0 +1,107 @@
+# Sway minimal configuration for NVIDIA RTX 4070
+exec "export WLR_NO_HARDWARE_CURSORS=1"  # Evita problemas con el cursor en NVIDIA
+exec "export GBM_BACKEND=nvidia-drm"     # Usa el backend adecuado para NVIDIA
+exec "export LIBVA_DRIVER_NAME=nvidia"   # Para aplicaciones con VA-API (como reproductores de video)
+exec "export XDG_SESSION_TYPE=wayland"   # Indica que es una sesión Wayland
+exec "export XDG_SESSION_DESKTOP=sway"   # Especifica Sway como escritorio
+exec "export WLR_RENDERER=vulkan"        # Usa Vulkan para renderizado (ideal para juegos o apps gráficas)
+exec "export __GL_SYNC_TO_VBLANK=1"
+# Set modifier key (Windows key)
+set $mod Mod4
+
+# Font for window titles
+font pango:monospace 10
+
+# Start a terminal
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec alacritty -e tmux
+
+# Kill focused window
+bindsym $mod+w kill
+bindsym $mod+a exec alacritty -e ranger "$@"
+# Start launcher
+bindsym $mod+r exec wofi --show drun
+exec swayidle -w timeout 300 'swaylock -f'
+bindsym $mod+l exec swaylock
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal/vertical orientation
+bindsym $mod+Shift+v split h
+bindsym $mod+v split v
+
+# Toggle fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Change layout
+bindsym $mod+s layout stacking
+bindsym $mod+q layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle floating
+bindsym $mod+Shift+space floating toggle
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+
+# Move container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+p exec "grim -g "$(slurp)" - | swappy -f -"
+# Reload configuration
+bindsym $mod+Shift+r reload
+
+# Exit Sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -b 'Yes' 'swaymsg exit'
+
+# Waybar
+bar {
+    swaybar_command waybar
+}
+
+# Wallpaper
+exec_always swaybg -i /home/fallenangel/wallpaper/wp13059150-yoru-chainsaw-man-wallpapers.jpg -m fill
+
+#exec_always swaybg -i /home/fallenangel/wallpaper/222.jpg -m fill
+
+# Output configuration (adjust for your laptop screen)
+output eDP-1 mode 1920x1200@165Hz
+
+# Touchpad
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+}
+
+# Keyboard (Spanish layout)
+input "type:keyboard" {
+    xkb_layout es
+}
+
+default_border none
+
+default_floating_border none 
+for_window [class=".*"] border none
+gaps inner 4
+gaps outer 4
+
+bindsym XF86Launch1 exec --no-startup-id /home/fallenangel/.config/i3/asusctl/performans.sh
+bindsym XF86Launch4 exec --no-startup-id /home/fallenangel/.config/i3/asusctl/balance.sh
+
