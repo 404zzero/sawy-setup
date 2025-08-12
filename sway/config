@@ -1,13 +1,26 @@
+include /etc/sway/config.d/*
+
 # Sway minimal configuration for NVIDIA RTX 4070
-exec "export WLR_NO_HARDWARE_CURSORS=1"  # Evita problemas con el cursor en NVIDIA
-exec "export GBM_BACKEND=nvidia-drm"     # Usa el backend adecuado para NVIDIA
-exec "export LIBVA_DRIVER_NAME=nvidia"   # Para aplicaciones con VA-API (como reproductores de video)
-exec "export XDG_SESSION_TYPE=wayland"   # Indica que es una sesión Wayland
-exec "export XDG_SESSION_DESKTOP=sway"   # Especifica Sway como escritorio
-exec "export WLR_RENDERER=vulkan"        # Usa Vulkan para renderizado (ideal para juegos o apps gráficas)
-exec "export __GL_SYNC_TO_VBLANK=1"
+exec_always "export WLR_NO_HARDWARE_CURSORS=1"  # Evita problemas con el cursor en NVIDIA
+exec_always "export GBM_BACKEND=nvidia-drm"     # Usa el backend adecuado para NVIDIA
+exec_always "export LIBVA_DRIVER_NAME=nvidia"   # Para aplicaciones con VA-API (como reproductores de video)
+exec_always "export XDG_SESSION_TYPE=wayland"   # Indica que es una sesión Wayland
+exec_always "export XDG_SESSION_DESKTOP=sway"   # Especifica Sway como escritorio
+exec_always "export WLR_RENDERER=vulkan"        # Usa Vulkan para renderizado (ideal para juegos o apps gráficas)
+
+set $GBM_BACKEND nvidia-drm
+set $__GLX_VENDOR_LIBRARY_NAME nvidia
+set $WLR_NO_HARDWARE_CURSORS 1
+set $WLR_RENDERER vulkan
+
+
+
+xwayland enable
+
 # Set modifier key (Windows key)
 set $mod Mod4
+
+exec_always mako
 
 # Font for window titles
 font pango:monospace 10
@@ -15,6 +28,8 @@ font pango:monospace 10
 # Start a terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+Return exec alacritty -e tmux
+
+bindsym $mod+Shift+p exec grim -g "$(slurp)" - | swappy -f -
 
 # Kill focused window
 bindsym $mod+w kill
@@ -77,7 +92,7 @@ bar {
 }
 
 # Wallpaper
-exec_always swaybg -i /home/fallenangel/wallpaper/wp13059150-yoru-chainsaw-man-wallpapers.jpg -m fill
+exec_always swaybg -i /home/fallenangel/wallpaper/wallhaven-zmverj_1920x851.jpg -m fill
 
 #exec_always swaybg -i /home/fallenangel/wallpaper/222.jpg -m fill
 
@@ -97,7 +112,7 @@ input "type:keyboard" {
 
 default_border none
 
-default_floating_border none 
+default_floating_border none
 for_window [class=".*"] border none
 gaps inner 4
 gaps outer 4
@@ -105,3 +120,5 @@ gaps outer 4
 bindsym XF86Launch1 exec --no-startup-id /home/fallenangel/.config/i3/asusctl/performans.sh
 bindsym XF86Launch4 exec --no-startup-id /home/fallenangel/.config/i3/asusctl/balance.sh
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/fallenangel/.config/sway/navegador/librewolf-limit.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/fallenangel/.config/sway/navegador/stop-cpulimit.sh
