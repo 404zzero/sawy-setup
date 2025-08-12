@@ -1,0 +1,142 @@
+/* Global styles */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Hack, monospace;
+    font-size: 13px;
+    min-height: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Transparent bar */
+window#waybar {
+    background: transparent;
+    color: #ffffff;
+}
+
+/* Window module */
+#window {
+    font-weight: bold;
+    padding: 0 12px;
+    margin: 0 5px;
+    background: rgba(30, 30, 46, 0.9);
+    border-radius: 8px;
+}
+
+/* Workspaces single bubble */
+#workspaces {
+    padding: 0 8px;
+    margin: 0 5px;
+    background: rgba(30, 30, 46, 0.9);
+    border-radius: 8px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    margin: 0 3px;
+    background: transparent;
+    color: #ffffff;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #89b4fa;
+    border-bottom: 2px solid #89b4fa;
+    background: rgba(49, 50, 68, 0.9);
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+}
+
+/* Mode module */
+#mode {
+    background: rgba(30, 30, 46, 0.9);
+    color: #ffffff;
+    padding: 0 12px;
+    margin: 0 5px;
+    border-radius: 8px;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Other modules */
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray {
+    padding: 0 12px;
+    margin: 0 5px;
+    background: rgba(30, 30, 46, 0.9);
+    border-radius: 8px;
+}
+
+#clock {
+    font-weight: bold;
+    color: #94e2d5;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.charging {
+    color: #f9e2af;
+}
+
+#battery.warning:not(.charging) {
+    background: rgba(243, 139, 168, 0.9);
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background: rgba(255, 255, 255, 0.9);
+        color: #000000;
+    }
+}
+
+#cpu {
+    color: #f38ba8;
+}
+
+#memory {
+    color: #fab387;
+}
+
+#network {
+    color: #89b4fa;
+}
+
+#network.disconnected {
+    background: rgba(243, 139, 168, 0.9);
+    color: #ffffff;
+}
+
+#pulseaudio {
+    color: #b4befe;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+#tray {
+    background: rgba(30, 30, 46, 0.9);
+    border-radius: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .active {
+    -gtk-icon-effect: highlight;
+}

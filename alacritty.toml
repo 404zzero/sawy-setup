@@ -86,4 +86,5 @@ opacity = 0.8
 [terminal]
 [terminal.shell]
 program = "/bin/zsh"
-args = ["-c", "temp_file=$(mktemp); pokeget random -s --hide-name > $temp_file; fastfetch --file $(shuf -n1 -e /home/fallenangel/wallpaper/ascii_img.txt /home/fallenangel/wallpaper/ascii_img2.txt $temp_file) --load-config /home/fallenangel/wallpaper/fastfetch/examples/22.jsonc; rm $temp_file; exec zsh"]
+args=["-c", "temp_file=$(mktemp); selected_file=$(shuf -n1 -e /home/fallenangel/wallpaper/ascii_img.txt /home/fallenangel/wallpaper/logo.txt); fastfetch --file \"$selected_file\" --load-config /home/fallenangel/wallpaper/fastfetch/examples/12.jsonc; rm \"$temp_file\"; exec zsh"]
+
